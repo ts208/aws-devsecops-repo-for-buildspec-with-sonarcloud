@@ -1,11 +1,14 @@
 version: 0.2
+
 phases:
   install:
     runtime-versions:
       java: latest
+
   build:
     commands:
       - echo "Project Key: $SONAR_PROJECT_KEY"
-      - if [ -z "$SONAR_TOKEN" ]; then echo "SONAR_TOKEN is empty"; else echo "SONAR_TOKEN is set"; fi
+      - echo "Org: $SONAR_PROJECT_KEY"
+      - "if [ -z \"$SONAR_TOKEN\" ]; then echo \"SONAR_TOKEN is empty\"; else echo \"SONAR_TOKEN is set\"; fi"
       - echo "Token length: ${#SONAR_TOKEN}"
       - mvn verify sonar:sonar -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.organization=$SONAR_PROJECT_KEY -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN
