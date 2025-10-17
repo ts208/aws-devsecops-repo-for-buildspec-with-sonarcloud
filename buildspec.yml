@@ -5,4 +5,6 @@ phases:
       java: latest
   build:
     commands:
-      - mvn verify sonar:sonar -Dsonar.projectKey=sonarjavadevsecpractisecloud -Dsonar.organization=sonarjavadevsecpractisecloud -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN 
+      - echo "SONAR_PROJECT_KEY: $SONAR_PROJECT_KEY"
+      - echo "SONAR_TOKEN length: ${#SONAR_TOKEN}"
+      - mvn verify sonar:sonar -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.organization=$SONAR_PROJECT_KEY -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN 
